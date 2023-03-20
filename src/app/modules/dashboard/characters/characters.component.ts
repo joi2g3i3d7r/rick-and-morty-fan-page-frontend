@@ -18,8 +18,6 @@ export class CharactersComponent {
 
   getCharacters(): void {
     this.characterService.getCharacters().subscribe((characters) => {
-      console.log(characters);
-
       this.characters = characters;
     });
   }

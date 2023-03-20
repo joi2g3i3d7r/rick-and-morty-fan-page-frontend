@@ -17,8 +17,14 @@ export class CharactersService {
 
   addFavoriteCharacter(userId: string, character: Character) {
     return this.httpClient.post(
-      `/api/users/${userId}/favorite-characters`,
+      `http://localhost:3000/api/users/${userId}/favorite-characters`,
       character
+    );
+  }
+
+  getAllFavoriteCharacters(userId: string) {
+    return this.httpClient.get(
+      `http://localhost:3000/api/users/${userId}/favorite-characters`
     );
   }
 }
