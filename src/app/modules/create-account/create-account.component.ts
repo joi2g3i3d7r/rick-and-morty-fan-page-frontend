@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '@app/classes/user';
-import { ApiService } from '@app/services/api.service';
+import { UserService } from '@app/services/user.service';
 @Component({
   selector: 'app-create-account',
   templateUrl: './create-account.component.html',
@@ -24,7 +24,7 @@ export class CreateAccountComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private apiService: ApiService,
+    private userService: UserService,
     private router: Router
   ) {}
 
@@ -49,7 +49,7 @@ export class CreateAccountComponent {
     user.email = this.f['email'].value;
     user.password = this.f['password'].value;
 
-    this.apiService.register(user).subscribe(() => {
+    this.userService.register(user).subscribe(() => {
       this.router.navigate(['/']);
     });
   }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService } from '@app/services/api.service';
+import { UserService } from '@app/services/user.service';
 
 @Component({
   selector: 'app-auth',
@@ -16,7 +16,7 @@ export class AuthComponent {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private apiService: ApiService
+    private userService: UserService
   ) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -35,13 +35,11 @@ export class AuthComponent {
       return;
     }
 
-    this.apiService
+    this.userService
       .login(this.f['email'].value, this.f['password'].value)
       .subscribe({
-        next: (data) => {
-          console.log(data);
-
-          // this.router.navigate(['/characters']);
+        next: () => {
+          this.router.navigate(['/dashboard']);
         },
         error: (error) => {
           console.error(error);
