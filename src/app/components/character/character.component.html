@@ -1,0 +1,20 @@
+<div class="card mt-2">
+  <img
+    class="card-img-top"
+    src="{{ character.image }}"
+    alt="{{ character.name }}"
+    [ngClass]="{ 'hover-effect': isHovered }"
+    (mouseover)="isHovered = true"
+    (mouseout)="isHovered = false"
+  />
+  <div class="card-body">
+    <h5 class="card-title">{{ character.name }}</h5>
+    <p class="card-text">Serie: {{ character.origin.name }}</p>
+    <p class="card-text">Género: {{ character.gender }}</p>
+    <p class="card-text">Episodios: {{ character.episode.length }}</p>
+    <p class="card-text">Estado: {{ character.status }}</p>
+    <button class="btn btn-primary" (click)="addToFavorites(character)">
+      Agregar a mis favoritos
+    </button>
+  </div>
+</div>

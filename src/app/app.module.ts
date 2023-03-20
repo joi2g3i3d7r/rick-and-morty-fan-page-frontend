@@ -5,11 +5,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserService } from './services/user.service';
-import { HeaderComponent } from './shared/components/header/header.component';
-import { SearchComponent } from './shared/components/search/search.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, SearchComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
