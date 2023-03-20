@@ -23,8 +23,8 @@ export class CharactersService {
   }
 
   getAllFavoriteCharacters(userId: string) {
-    return this.httpClient.get(
-      `http://localhost:3000/api/users/${userId}/favorite-characters`
-    );
+    return this.httpClient
+      .get(`http://localhost:3000/api/users/${userId}/favorite-characters`)
+      .pipe(map((data: any) => data.listFavoriteCharacters));
   }
 }
