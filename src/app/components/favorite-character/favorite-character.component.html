@@ -11,14 +11,7 @@
     <h5 class="card-title">{{ character.name }}</h5>
     <p class="card-text">Serie: {{ character.location.name }}</p>
     <p class="card-text">Género: {{ character.gender }}</p>
-    <p class="card-text">Episodios: {{ character.episode.length }}</p>
-    <p class="card-text">Estado: {{ character.status }}</p>
-    <button
-      class="btn btn-primary"
-      (click)="addToFavorites(character)"
-      [disabled]="character.canAddAsFavorite"
-    >
-      Agregar a mis favoritos
-    </button>
+    <p class="card-text">Calificación: {{ character.qualification }}</p>
+    <p class="card-text">Comentario: {{ character.comment }}</p>
   </div>
 </div>

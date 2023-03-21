@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-md-12 mt-4">
+    <h1 class="text-center">Lista de personajes</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-3" *ngFor="let favoriteCharacter of favoriteCharacters">
+    <app-favorite-character
+      [character]="favoriteCharacter"
+    ></app-favorite-character>
+  </div>
+</div>

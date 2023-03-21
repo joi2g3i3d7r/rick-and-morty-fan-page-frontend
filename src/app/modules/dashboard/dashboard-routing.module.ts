@@ -15,6 +15,13 @@ const routes: Routes = [
             (m) => m.CharactersModule
           ),
       },
+      {
+        path: 'my-characters',
+        loadChildren: () =>
+          import('./my-characters/my-characters.module').then(
+            (m) => m.MyCharactersModule
+          ),
+      },
     ],
   },
 ];
