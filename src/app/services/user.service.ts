@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '@app/classes/user';
+import { Environment } from '@app/environment/environment';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { tap } from 'rxjs';
 
@@ -13,12 +14,15 @@ export class UserService {
   constructor(private httpClient: HttpClient) {}
 
   register(user: User) {
-    return this.httpClient.post('http://localhost:3000/register', user);
+    return this.httpClient.post(
+      `${Environment.API_BACKEND}/api/register`,
+      user
+    );
   }
 
   login(email: string, password: string) {
     return this.httpClient
-      .post('http://localhost:3000/login', {
+      .post(`${Environment.API_BACKEND}/api/login`, {
         email,
         password,
       })
