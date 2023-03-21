@@ -1,8 +1,8 @@
 <div class="card mt-4">
   <img
     class="card-img-top"
-    src="{{ character.image }}"
-    alt="{{ character.name }}"
+    [src]="character.image"
+    [alt]="character.name"
     [ngClass]="{ 'hover-effect': isHovered }"
     (mouseover)="isHovered = true"
     (mouseout)="isHovered = false"
@@ -15,7 +15,7 @@
     <p class="card-text">Estado: {{ character.status }}</p>
     <button
       class="btn btn-primary"
-      (click)="addToFavorites(character)"
+      (click)="addFavorite()"
       [disabled]="character.canAddAsFavorite"
     >
       Agregar a mis favoritos

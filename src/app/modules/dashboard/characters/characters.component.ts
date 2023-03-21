@@ -11,6 +11,9 @@ import { UserService } from '@app/services/user.service';
 })
 export class CharactersComponent {
   characters!: Character[];
+  qualification: number = 0;
+  comment: string = '';
+  characterSelected!: Character;
 
   constructor(
     private characterService: CharactersService,
@@ -19,6 +22,52 @@ export class CharactersComponent {
 
   ngOnInit(): void {
     this.getCharacters();
+  }
+
+  openModal() {
+    const modal = document.getElementById('favoritesModal');
+    if (modal) {
+      modal.classList.add('show');
+      modal.style.display = 'block';
+    }
+  }
+
+  closeModal() {
+    const modal = document.getElementById('favoritesModal');
+    if (modal) {
+      modal.classList.remove('show');
+      modal.style.display = 'none';
+      this.qualification = 0;
+      this.comment = '';
+    }
+  }
+
+  onAddFavorite(character: Character) {
+    this.characterSelected = character;
+    this.openModal();
+  }
+
+  addFavorite() {
+    const { id: userId } = this.userService.getUserInfo();
+
+    this.characterService
+      .addFavoriteCharacter(userId, {
+        ...this.characterSelected,
+        comment: this.comment,
+        qualification: this.qualification,
+      })
+      .subscribe({
+        next: () => {
+          alert(`Favorite ${this.characterSelected.name} added successfully`);
+          this.closeModal();
+        },
+        error: (error) => {
+          console.error(error);
+          alert(
+            `An error occurred while adding ${this.characterSelected.name}`
+          );
+        },
+      });
   }
 
   getCharacters(): void {
