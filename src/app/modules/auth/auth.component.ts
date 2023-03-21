@@ -39,7 +39,7 @@ export class AuthComponent {
       .login(this.f['email'].value, this.f['password'].value)
       .subscribe({
         next: () => {
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/dashboard/characters']);
         },
         error: (error) => {
           console.error(error);

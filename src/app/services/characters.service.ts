@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Character } from '@app/classes/character';
+import { FavoriteCharacter } from '@app/classes/favorite-character';
 import { map } from 'rxjs';
 
 @Injectable({
@@ -15,7 +15,7 @@ export class CharactersService {
       .pipe(map((data: any) => data.results));
   }
 
-  addFavoriteCharacter(userId: string, character: Character) {
+  addFavoriteCharacter(userId: string, character: FavoriteCharacter) {
     return this.httpClient.post(
       `http://localhost:3000/api/users/${userId}/favorite-characters`,
       character

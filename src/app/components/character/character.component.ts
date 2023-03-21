@@ -19,14 +19,24 @@ export class CharacterComponent {
 
   addToFavorites(character: Character) {
     const { id: userId } = this.userService.getUserInfo();
-    this.characterService.addFavoriteCharacter(userId, character).subscribe({
-      next: () => {
-        alert(`Favorite ${character.name} added successfully`);
-      },
-      error: (error) => {
-        console.error(error);
-        alert(`An error occurred while adding ${character.name}`);
-      },
-    });
+
+    const qualification = prompt('Califique este personaje') || 0;
+    const comment = prompt('Añade un comentario') || '';
+
+    this.characterService
+      .addFavoriteCharacter(userId, {
+        ...character,
+        comment,
+        qualification: Number(qualification),
+      })
+      .subscribe({
+        next: () => {
+          alert(`Favorite ${character.name} added successfully`);
+        },
+        error: (error) => {
+          console.error(error);
+          alert(`An error occurred while adding ${character.name}`);
+        },
+      });
   }
 }

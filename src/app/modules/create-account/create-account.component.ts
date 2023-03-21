@@ -50,7 +50,7 @@ export class CreateAccountComponent {
     user.password = this.f['password'].value;
 
     this.userService.register(user).subscribe(() => {
-      this.router.navigate(['/']);
+      this.router.navigate(['/login']);
     });
   }
 }
